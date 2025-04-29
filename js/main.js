@@ -1,6 +1,9 @@
 import { MazeModel } from "./maze_model.js";
 import { Controls } from "./controls.js";
 import { RobotModel } from "./robot_model.js";
+import { PathFinderBFS } from "./pathfinder_bfs.js";
+
+const TWEEN = window.TWEEN;
 
 // Configuración inicial
 const scene = new THREE.Scene();
@@ -26,8 +29,17 @@ camera.lookAt(0, 0, 0);
 const mazeModel = new MazeModel(scene);
 await mazeModel.initialize("/data/maze-runner.json");
 
+// Ejecutar búsqueda BFS una vez que el laberinto está cargado
+const pathFinder = new PathFinderBFS(mazeModel.mazeConfig.config);
+const path = pathFinder.findPath();
+
 // Crear el robot después de que el laberinto esté inicializado
 const robotModel = new RobotModel(scene, mazeModel);
+
+// Iniciar la animación del robot
+if (path) {
+  robotModel.followPath(path, 1000); // 1000ms de delay entre cada movimiento
+}
 
 // Create controls after scene and camera are initialized
 const controls = new Controls(camera, renderer);
@@ -35,6 +47,7 @@ const controls = new Controls(camera, renderer);
 // Make sure to call update in your animation loop
 function animate() {
   requestAnimationFrame(animate);
+  TWEEN.update(); // Actualizar las animaciones
   controls.update();
   renderer.render(scene, camera);
 }

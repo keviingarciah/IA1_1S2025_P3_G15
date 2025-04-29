@@ -136,4 +136,42 @@ export class RobotModel {
   rotate(angle) {
     this.robotGroup.rotation.y = angle;
   }
+
+  async followPath(path, delay = 1000) {
+    for (let i = 0; i < path.length; i++) {
+      const [x, z] = path[i];
+      // Calcular la rotación antes de mover
+      if (i < path.length - 1) {
+        const [nextX, nextZ] = path[i + 1];
+        const angle = Math.atan2(nextX - x, nextZ - z);
+        this.robotGroup.rotation.y = angle;
+      }
+
+      // Calcular la posición en el mundo
+      const worldX =
+        x * this.mazeModel.wallSize -
+        (this.mazeModel.width * this.mazeModel.wallSize) / 2;
+      const worldZ =
+        z * this.mazeModel.wallSize -
+        (this.mazeModel.height * this.mazeModel.wallSize) / 2;
+
+      // Animar el movimiento
+      await new Promise((resolve) => {
+        const startPos = {
+          x: this.robotGroup.position.x,
+          z: this.robotGroup.position.z,
+        };
+
+        const animation = new TWEEN.Tween(startPos)
+          .to({ x: worldX, z: worldZ }, delay)
+          .easing(TWEEN.Easing.Quadratic.InOut)
+          .onUpdate(() => {
+            this.robotGroup.position.x = startPos.x;
+            this.robotGroup.position.z = startPos.z;
+          })
+          .onComplete(resolve)
+          .start();
+      });
+    }
+  }
 }
