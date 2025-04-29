@@ -4,6 +4,7 @@ import { RobotModel } from "./robot_model.js";
 import { PathFinderBFS } from "./pathfinder_bfs.js";
 import { PathFinderDFS } from "./pathfinder_dfs.js";
 import { PathFinderAStar } from "./pathfinder_astar.js";
+import { PathFinderDijkstra } from "./pathfinder_dijkstra.js";
 
 const TWEEN = window.TWEEN;
 
@@ -43,8 +44,14 @@ const pathFinder = new PathFinderDFS(mazeModel.mazeConfig.config);
 const path = pathFinder.findPath();
 */
 
+/*
 // Ejecutar búsqueda A* una vez que el laberinto está cargado
 const pathFinder = new PathFinderAStar(mazeModel.mazeConfig.config);
+const path = pathFinder.findPath();
+*/
+
+// Ejecutar búsqueda Dijkstra una vez que el laberinto está cargado
+const pathFinder = new PathFinderDijkstra(mazeModel.mazeConfig.config);
 const path = pathFinder.findPath();
 
 // Crear el robot después de que el laberinto esté inicializado
