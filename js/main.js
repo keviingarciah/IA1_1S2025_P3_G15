@@ -2,6 +2,8 @@ import { MazeModel } from "./maze_model.js";
 import { Controls } from "./controls.js";
 import { RobotModel } from "./robot_model.js";
 import { PathFinderBFS } from "./pathfinder_bfs.js";
+import { PathFinderDFS } from "./pathfinder_dfs.js";
+import { PathFinderAStar } from "./pathfinder_astar.js";
 
 const TWEEN = window.TWEEN;
 
@@ -29,8 +31,20 @@ camera.lookAt(0, 0, 0);
 const mazeModel = new MazeModel(scene);
 await mazeModel.initialize("/data/maze-runner.json");
 
+/*
 // Ejecutar búsqueda BFS una vez que el laberinto está cargado
 const pathFinder = new PathFinderBFS(mazeModel.mazeConfig.config);
+const path = pathFinder.findPath();
+*/
+
+/*
+// Ejecutar búsqueda DFS una vez que el laberinto está cargado
+const pathFinder = new PathFinderDFS(mazeModel.mazeConfig.config);
+const path = pathFinder.findPath();
+*/
+
+// Ejecutar búsqueda A* una vez que el laberinto está cargado
+const pathFinder = new PathFinderAStar(mazeModel.mazeConfig.config);
 const path = pathFinder.findPath();
 
 // Crear el robot después de que el laberinto esté inicializado
