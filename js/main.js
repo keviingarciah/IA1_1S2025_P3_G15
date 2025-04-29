@@ -1,5 +1,6 @@
-import { MazeModel } from "./models.js";
+import { MazeModel } from "./maze_model.js";
 import { Controls } from "./controls.js";
+import { RobotModel } from "./robot_model.js";
 
 // Configuración inicial
 const scene = new THREE.Scene();
@@ -24,6 +25,9 @@ camera.lookAt(0, 0, 0);
 // Crear el laberinto y los controles
 const mazeModel = new MazeModel(scene);
 await mazeModel.initialize("/data/maze-runner.json");
+
+// Crear el robot después de que el laberinto esté inicializado
+const robotModel = new RobotModel(scene, mazeModel);
 
 // Create controls after scene and camera are initialized
 const controls = new Controls(camera, renderer);

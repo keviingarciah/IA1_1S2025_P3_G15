@@ -1,4 +1,4 @@
-import { MazeConfig } from "./config.js";
+import { MazeConfig } from "./maze_config.js";
 
 export class MazeModel {
   constructor(scene) {
