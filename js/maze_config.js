@@ -9,21 +9,18 @@ export class MazeConfig {
     };
   }
 
-  async loadConfig(jsonPath) {
+  async loadConfig(jsonContent) {
     try {
-      const response = await fetch(jsonPath);
-      const newConfig = await response.json();
-
-      // Actualizar toda la configuración
+      // Ahora recibimos directamente el contenido del JSON
       this.config = {
-        ancho: newConfig.ancho,
-        alto: newConfig.alto,
-        inicio: newConfig.inicio,
-        fin: newConfig.fin,
-        paredes: newConfig.paredes,
+        ancho: jsonContent.ancho,
+        alto: jsonContent.alto,
+        inicio: jsonContent.inicio,
+        fin: jsonContent.fin,
+        paredes: jsonContent.paredes,
       };
 
-      return true; // Indicar que la carga fue exitosa
+      return true;
     } catch (error) {
       console.error("Error loading maze configuration:", error);
       return false;

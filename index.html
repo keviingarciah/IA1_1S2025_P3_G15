@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laberinto 3D</title>
+    <title>MazeBot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div id="canvas-container"></div>
+    <div id="loader-container" class="loader-overlay">
+        <div class="loader-content">
+            <h2>Load Maze</h2>
+            <input type="file" id="json-input" accept=".json">
+            <label for="json-input" class="json-input-label">Choose JSON File</label>
+            <p id="error-message" class="error-text"></p>
+        </div>
+    </div>
+    <div id="canvas-container" style="display: none;"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>

@@ -9,8 +9,9 @@ export class MazeModel {
     this.setupLights(scene);
   }
 
-  async initialize(configPath) {
-    await this.mazeConfig.loadConfig(configPath);
+  async initialize(config) {
+    // Ahora pasamos directamente el objeto config
+    await this.mazeConfig.loadConfig(config);
     this.width = this.mazeConfig.config.ancho;
     this.height = this.mazeConfig.config.alto;
     this.maze = this.createMaze();
