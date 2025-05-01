@@ -17,11 +17,11 @@ export class SimulationMenu {
     const content = document.createElement("div");
     content.className = "menu-content";
     content.innerHTML = `
-            <h2>Simulation Complete</h2>
+            <h2>¡SIMULACIÓN COMPLETADA!</h2>
             <div class="menu-buttons">
-                <button id="restart-btn" class="menu-button">Restart Animation</button>
-                <button id="algorithm-btn" class="menu-button">Try Another Algorithm</button>
-                <button id="maze-btn" class="menu-button">Load New Maze</button>
+                <button id="restart-btn" class="menu-button">Reiniciar animación</button>
+                <button id="algorithm-btn" class="menu-button">intentar otro algoritmo</button>
+                <button id="maze-btn" class="menu-button">Cargar nuevo laberinto</button>
             </div>
         `;
 

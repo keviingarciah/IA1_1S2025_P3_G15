@@ -12,23 +12,23 @@
 <body>
     <div id="loader-container" class="loader-overlay">
         <div class="loader-content">
-            <h2>Load Maze</h2>
+            <h2>Cargar laberinto</h2>
             <input type="file" id="json-input" accept=".json">
-            <label for="json-input" class="json-input-label">Choose JSON File</label>
+            <label for="json-input" class="json-input-label">Escoge un archivo JSON</label>
             <p id="error-message" class="error-text"></p>
         </div>
     </div>
 
     <div id="algorithm-selector" class="loader-overlay" style="display: none;">
         <div class="loader-content">
-            <h2>Select Algorithm</h2>
+            <h2>Escoger un algoritmo</h2>
             <select id="algorithm-select" class="algorithm-select">
                 <option value="bfs">Breadth-First Search</option>
                 <option value="dfs">Depth-First Search</option>
                 <option value="astar">A* Search</option>
                 <option value="dijkstra">Dijkstra's Algorithm</option>
             </select>
-            <button id="start-button" class="start-button">Start Simulation</button>
+            <button id="start-button" class="start-button">Empezar simulación</button>
         </div>
     </div>
 

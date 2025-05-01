@@ -20,7 +20,7 @@ export class AlgorithmSelector {
     content.className = "loader-content";
 
     content.innerHTML = `
-            <h2>Select Algorithm</h2>
+            <h2>Escoge un algoritmo</h2>
             <select id="algorithm-select" class="algorithm-select">
                 ${this.algorithms
                   .map(
@@ -28,7 +28,7 @@ export class AlgorithmSelector {
                   )
                   .join("")}
             </select>
-            <button id="start-button" class="start-button">Start Simulation</button>
+            <button id="start-button" class="start-button">empezar simulación</button>
         `;
 
     this.container.appendChild(content);
